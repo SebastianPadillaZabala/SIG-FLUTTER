@@ -20,20 +20,21 @@ class MapView extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return SizedBox(
-        width: size.width,
-        height: size.height,
-        child: Listener(
-          onPointerMove: (pointerMoveEvent) =>
-              mapBloc.add(OnStopFollowingUserEvent()),
-          child: GoogleMap(
-            initialCameraPosition: initialCameraPosition,
-            myLocationEnabled: true,
-            zoomControlsEnabled: false,
-            myLocationButtonEnabled: false,
-            polylines: polylines,
-            onMapCreated: (controller) =>
-                mapBloc.add(OnMapInitializedEvent(controller)),
-          ),
-        ));
+      width: size.width,
+      height: size.height,
+      child: Listener(
+        onPointerMove: (pointerMoveEvent) =>
+            mapBloc.add(OnStopFollowingUserEvent()),
+        child: GoogleMap(
+          initialCameraPosition: initialCameraPosition,
+          myLocationEnabled: true,
+          zoomControlsEnabled: false,
+          myLocationButtonEnabled: false,
+          polylines: polylines,
+          onMapCreated: (controller) =>
+              mapBloc.add(OnMapInitializedEvent(controller)),
+        ),
+      ),
+    );
   }
 }

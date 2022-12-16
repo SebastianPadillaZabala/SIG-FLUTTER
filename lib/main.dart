@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sig_app/blocs/blocs.dart';
 import 'package:sig_app/screens/screens.dart';
+import 'package:sig_app/views/login/login_page.dart';
+import 'package:sig_app/views/login/welcome_page.dart';
 
 void main() {
   runApp(MultiBlocProvider(providers: [
@@ -21,6 +23,6 @@ class MapsApp extends StatelessWidget {
     return const MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'MapsApp',
-        home: LoadingScreen());
+        home: LoadingScreen()); // WelcomePage());  // // LoginPage());//
   }
 }
