@@ -25,6 +25,7 @@ class OnToggleUserRoute extends MapEvent {}
 
 class DisplayPolylinesEvente extends MapEvent {
   final Map<String, Polyline> polylines;
+  final Map<String, Marker> markers;
 
-  const DisplayPolylinesEvente(this.polylines);
+  const DisplayPolylinesEvente(this.polylines, this.markers);
 }

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
@@ -26,8 +27,8 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     on<UpdateUserPolylineEvent>(_onPolylineNewPoint);
     on<OnToggleUserRoute>((event, emit) =>
         emit(state.copyWith(showMyRoutes: !state.showMyRoutes)));
-    on<DisplayPolylinesEvente>(
-        (event, emit) => emit(state.copyWith(polylines: event.polylines)));
+    on<DisplayPolylinesEvente>((event, emit) => emit(
+        state.copyWith(polylines: event.polylines, markers: event.markers)));
 
     locationStateSubscription = locationBloc.stream.listen((locationState) {
       if (locationState.lastKnownLocation != null) {
@@ -71,7 +72,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
   void drawRoutePolyline(String query, String query2) {
     // ignore: prefer_const_constructors
     switch (query) {
-      case '1':
+      /*case '1':
         if (query2 == 'ida') {
           const myRoute2 = Polyline(
               polylineId: PolylineId('route'),
@@ -96,7 +97,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
           currentPolylines['route'] = myRoute2;
           add(DisplayPolylinesEvente(currentPolylines));
           break;
-        } // The switch statement must be told to exit, or it will execute every case.
+        } */ // The switch statement must be told to exit, or it will execute every case.
       case '2':
         if (query2 == 'ida') {
           const myRoute2 = Polyline(
@@ -106,9 +107,22 @@ class MapBloc extends Bloc<MapEvent, MapState> {
               startCap: Cap.roundCap,
               endCap: Cap.roundCap,
               points: ruta2Ida);
+
+          final startMarkerIda = Marker(
+              markerId: const MarkerId('start-ida'),
+              position: ruta2Ida.first,
+              icon: BitmapDescriptor.defaultMarkerWithHue(
+                  BitmapDescriptor.hueGreen));
+          final endMarkerIda = Marker(
+            markerId: const MarkerId('end-ida'),
+            position: ruta2Ida.last,
+          );
           final currentPolylines = Map<String, Polyline>.from(state.polylines);
+          final currentMarkers = Map<String, Marker>.from(state.markers);
           currentPolylines['route'] = myRoute2;
-          add(DisplayPolylinesEvente(currentPolylines));
+          currentMarkers['start-ida'] = startMarkerIda;
+          currentMarkers['end-ida'] = endMarkerIda;
+          add(DisplayPolylinesEvente(currentPolylines, currentMarkers));
           break;
         } else {
           const myRoute2 = Polyline(
@@ -118,11 +132,13 @@ class MapBloc extends Bloc<MapEvent, MapState> {
               startCap: Cap.roundCap,
               endCap: Cap.roundCap,
               points: ruta2Vuelta);
+          LatLng origen = ruta2Vuelta[0];
+          LatLng destino = ruta2Vuelta[ruta2Vuelta.length - 1];
           final currentPolylines = Map<String, Polyline>.from(state.polylines);
           currentPolylines['route'] = myRoute2;
-          add(DisplayPolylinesEvente(currentPolylines));
+          //add(DisplayPolylinesEvente(currentPolylines));
           break;
-        }
+        } /*
       case '5':
         if (query2 == 'ida') {
           const myRoute2 = Polyline(
@@ -330,7 +346,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
           currentPolylines['route'] = myRoute2;
           add(DisplayPolylinesEvente(currentPolylines));
           break;
-        }
+        }*/
       default:
     }
   }

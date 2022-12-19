@@ -1,11 +1,11 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:sig_app/blocs/blocs.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:sig_app/models/models.dart';
 
-class SearchDestinationDelegate extends SearchDelegate {
+class SearchDestinationDelegate extends SearchDelegate<SearchResult> {
   SearchDestinationDelegate() : super(searchFieldLabel: 'Buscar...');
 
   @override
@@ -24,7 +24,8 @@ class SearchDestinationDelegate extends SearchDelegate {
     return IconButton(
         icon: const Icon(Icons.arrow_back_ios),
         onPressed: () {
-          close(context, null);
+          final result = SearchResult(cancel: true);
+          close(context, result);
         });
   }
 
@@ -38,7 +39,15 @@ class SearchDestinationDelegate extends SearchDelegate {
     final mapBloc = BlocProvider.of<MapBloc>(context);
     return ListView(
       children: [
-        // ignore: prefer_const_constructors
+        ListTile(
+            leading:
+                const Icon(Icons.location_on_outlined, color: Colors.black),
+            title: const Text('Colocar la ubicacion manualmente',
+                style: TextStyle(color: Colors.black)),
+            onTap: () {
+              final result = SearchResult(cancel: false);
+              close(context, result);
+            }),
         GFListTile(
           avatar: const GFAvatar(
             backgroundImage: NetworkImage(
@@ -48,7 +57,8 @@ class SearchDestinationDelegate extends SearchDelegate {
           subTitleText: 'Lorem ipsum dolor sit amet, consectetur adipiscing',
           onTap: () {
             mapBloc.drawRoutePolyline('1', 'ida');
-            close(context, null);
+            final result = SearchResult(cancel: true);
+            close(context, result);
           },
         ),
         GFListTile(
@@ -60,7 +70,8 @@ class SearchDestinationDelegate extends SearchDelegate {
           subTitleText: 'Lorem ipsum dolor sit amet, consectetur adipiscing',
           onTap: () {
             mapBloc.drawRoutePolyline('1', 'vuelta');
-            close(context, null);
+            final result = SearchResult(cancel: true);
+            close(context, result);
           },
         ),
         GFListTile(
@@ -73,7 +84,8 @@ class SearchDestinationDelegate extends SearchDelegate {
           onTap: () {
             // TODO: regresar algo...
             mapBloc.drawRoutePolyline('2', 'ida');
-            close(context, null);
+            final result = SearchResult(cancel: true);
+            close(context, result);
           },
         ),
         GFListTile(
@@ -85,7 +97,8 @@ class SearchDestinationDelegate extends SearchDelegate {
           subTitleText: 'Lorem ipsum dolor sit amet, consectetur adipiscing',
           onTap: () {
             mapBloc.drawRoutePolyline('2', 'vuelta');
-            close(context, null);
+            final result = SearchResult(cancel: true);
+            close(context, result);
           },
         ),
         GFListTile(
@@ -98,7 +111,8 @@ class SearchDestinationDelegate extends SearchDelegate {
           onTap: () {
             // TODO: regresar algo...
             mapBloc.drawRoutePolyline('5', 'ida');
-            close(context, null);
+            final result = SearchResult(cancel: true);
+            close(context, result);
           },
         ),
         GFListTile(
@@ -110,7 +124,8 @@ class SearchDestinationDelegate extends SearchDelegate {
           subTitleText: 'Lorem ipsum dolor sit amet, consectetur adipiscing',
           onTap: () {
             mapBloc.drawRoutePolyline('5', 'vuelta');
-            close(context, null);
+            final result = SearchResult(cancel: true);
+            close(context, result);
           },
         ),
         GFListTile(
@@ -123,7 +138,8 @@ class SearchDestinationDelegate extends SearchDelegate {
           onTap: () {
             // TODO: regresar algo...
             mapBloc.drawRoutePolyline('8', 'vuelta');
-            close(context, null);
+            final result = SearchResult(cancel: true);
+            close(context, result);
           },
         ),
         GFListTile(
@@ -135,7 +151,8 @@ class SearchDestinationDelegate extends SearchDelegate {
           subTitleText: 'Lorem ipsum dolor sit amet, consectetur adipiscing',
           onTap: () {
             mapBloc.drawRoutePolyline('8', 'vuelta');
-            close(context, null);
+            final result = SearchResult(cancel: true);
+            close(context, result);
           },
         ),
         GFListTile(
@@ -149,7 +166,8 @@ class SearchDestinationDelegate extends SearchDelegate {
           onTap: () {
             // TODO: regresar algo...
             mapBloc.drawRoutePolyline('9', 'ida');
-            close(context, null);
+            final result = SearchResult(cancel: true);
+            close(context, result);
           },
         ),
         GFListTile(
@@ -161,7 +179,8 @@ class SearchDestinationDelegate extends SearchDelegate {
           subTitleText: 'Lorem ipsum dolor sit amet, consectetur adipiscing',
           onTap: () {
             mapBloc.drawRoutePolyline('9', 'vuelta');
-            close(context, null);
+            final result = SearchResult(cancel: true);
+            close(context, result);
           },
         ),
         GFListTile(
@@ -174,7 +193,8 @@ class SearchDestinationDelegate extends SearchDelegate {
           onTap: () {
             // TODO: regresar algo...
             mapBloc.drawRoutePolyline('10', 'ida');
-            close(context, null);
+            final result = SearchResult(cancel: true);
+            close(context, result);
           },
         ),
         GFListTile(
@@ -186,7 +206,8 @@ class SearchDestinationDelegate extends SearchDelegate {
           subTitleText: 'Lorem ipsum dolor sit amet, consectetur adipiscing',
           onTap: () {
             mapBloc.drawRoutePolyline('10', 'vuelta');
-            close(context, null);
+            final result = SearchResult(cancel: true);
+            close(context, result);
           },
         ),
         GFListTile(
@@ -199,7 +220,8 @@ class SearchDestinationDelegate extends SearchDelegate {
           onTap: () {
             // TODO: regresar algo...
             mapBloc.drawRoutePolyline('11', 'ida');
-            close(context, null);
+            final result = SearchResult(cancel: true);
+            close(context, result);
           },
         ),
         GFListTile(
@@ -211,7 +233,8 @@ class SearchDestinationDelegate extends SearchDelegate {
           subTitleText: 'Lorem ipsum dolor sit amet, consectetur adipiscing',
           onTap: () {
             mapBloc.drawRoutePolyline('11', 'vuelta');
-            close(context, null);
+            final result = SearchResult(cancel: true);
+            close(context, result);
           },
         ),
         GFListTile(
@@ -224,7 +247,8 @@ class SearchDestinationDelegate extends SearchDelegate {
           onTap: () {
             // TODO: regresar algo...
             mapBloc.drawRoutePolyline('16', 'ida');
-            close(context, null);
+            final result = SearchResult(cancel: true);
+            close(context, result);
           },
         ),
         GFListTile(
@@ -236,7 +260,8 @@ class SearchDestinationDelegate extends SearchDelegate {
           subTitleText: 'Lorem ipsum dolor sit amet, consectetur adipiscing',
           onTap: () {
             mapBloc.drawRoutePolyline('16', 'vuelta');
-            close(context, null);
+            final result = SearchResult(cancel: true);
+            close(context, result);
           },
         ),
         GFListTile(
@@ -249,7 +274,8 @@ class SearchDestinationDelegate extends SearchDelegate {
           onTap: () {
             // TODO: regresar algo...
             mapBloc.drawRoutePolyline('17', 'ida');
-            close(context, null);
+            final result = SearchResult(cancel: true);
+            close(context, result);
           },
         ),
         GFListTile(
@@ -261,7 +287,8 @@ class SearchDestinationDelegate extends SearchDelegate {
           subTitleText: 'Lorem ipsum dolor sit amet, consectetur adipiscing',
           onTap: () {
             mapBloc.drawRoutePolyline('17', 'vuelta');
-            close(context, null);
+            final result = SearchResult(cancel: true);
+            close(context, result);
           },
         ),
         GFListTile(
@@ -274,7 +301,8 @@ class SearchDestinationDelegate extends SearchDelegate {
           onTap: () {
             // TODO: regresar algo...
             mapBloc.drawRoutePolyline('18', 'ida');
-            close(context, null);
+            final result = SearchResult(cancel: true);
+            close(context, result);
           },
         ),
         GFListTile(
@@ -286,7 +314,8 @@ class SearchDestinationDelegate extends SearchDelegate {
           subTitleText: 'Lorem ipsum dolor sit amet, consectetur adipiscing',
           onTap: () {
             mapBloc.drawRoutePolyline('18', 'vuelta');
-            close(context, null);
+            final result = SearchResult(cancel: true);
+            close(context, result);
           },
         ),
       ],
