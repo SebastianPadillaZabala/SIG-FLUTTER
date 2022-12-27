@@ -23,7 +23,7 @@ class MapsApp extends StatelessWidget {
     return const MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'MapsApp',
-        home:WelcomePage()); //LoadingScreen());
+        home: WelcomePage()); //LoadingScreen());
     //  // // WelcomePage());  // // LoginPage());//
   }
 }

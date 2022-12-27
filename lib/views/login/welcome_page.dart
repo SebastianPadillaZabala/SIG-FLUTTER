@@ -39,18 +39,18 @@ class _WelcomePageState extends State<WelcomePage> {
                 "https://lottie.host/5860745e-5d6b-4de1-a062-5e6416c597ff/l3v6T6tfgX.json"),
           ),
           const Text(
-            "Ten una guia completa",
+            "Todas las lineas",
             style: TextStyle(
               color: Colors.white,
-              fontWeight: FontWeight.w400,
+              fontWeight: FontWeight.w700,
               fontSize: 30,
             ),
           ),
           const Text(
-            "al alcance de tu mano",
+            "en la palma de tu mano",
             style: TextStyle(
               color: Colors.white,
-              fontWeight: FontWeight.w400,
+              fontWeight: FontWeight.w700,
               fontSize: 30,
             ),
           ),

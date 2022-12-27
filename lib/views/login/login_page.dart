@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../screens/map_screen.dart';
+import '../home/home_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -97,7 +98,7 @@ class LoginPage extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) =>  MapScreen()));
+                                    builder: (context) =>  HomePage()));
                           },
                           child: Text("Iniciar"),
                         ),

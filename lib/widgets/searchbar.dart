@@ -13,12 +13,13 @@ class SearchBar extends StatelessWidget {
         width: double.infinity,
         child: GestureDetector(
           onTap: () {
-            showSearch(context: context, delegate: SearchDestinationDelegate());
+            showSearch(
+                context: context, delegate: SearchDestinationDelegateIda());
           },
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 13),
             // ignore: sort_child_properties_last
-            child: const Text('Escoge Una Linea De Micro...',
+            child: const Text('Escoge una linea...',
                 style: TextStyle(color: Colors.black)),
             decoration: BoxDecoration(
                 color: Colors.white,
