@@ -4,6 +4,7 @@ import 'package:sig_app/blocs/blocs.dart';
 import 'package:sig_app/screens/screens.dart';
 import 'package:sig_app/services/services.dart';
 import 'package:sig_app/views/login/welcome_page.dart';
+import 'package:sig_app/views/prueba_page.dart';
 
 void main() {
   runApp(MultiBlocProvider(providers: [
@@ -27,4 +28,14 @@ class MapsApp extends StatelessWidget {
         title: 'MapsApp',
         home: WelcomePage());
   }
+
+  //  @override
+  // Widget build(BuildContext context) {
+  //   return MaterialApp(
+  //       debugShowCheckedModeBanner: false,
+  //       title: 'MapsApp',
+  //       home: PruebaPage());
+  // }
+
+
 }
