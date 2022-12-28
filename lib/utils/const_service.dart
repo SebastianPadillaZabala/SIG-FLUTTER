@@ -8,14 +8,6 @@ const baseURL = "https://sigweb.fly.dev/api/";
 // const baseURL = "http://192.168.0.11:3000/api/"; 
 
 
-// https://sigweb.fly.dev/api/all-lineas
-// https://sigweb.fly.dev/api/una-linea/:linea
-// https://sigweb.fly.dev/api/all-recorridos
-// https://sigweb.fly.dev/api/un-recorrido/:recorrido
-// https://sigweb.fly.dev/api/all-puntos
-// https://sigweb.fly.dev/api/puntos-code/:code
-
-
 const allLineasURL = baseURL + 'all-lineas';
 const unaLineaURL = baseURL + 'una-linea'; // anadir al service /:linea
 
@@ -26,6 +18,10 @@ const unRecorridoURL = baseURL + 'un-recorrido'; // anadir al service /:recorrid
 
 const allPuntosURL = baseURL + 'all-puntos';
 const puntosCodeURL = baseURL + 'puntos-code'; // anadir al service /:code
+
+
+const allPuntosFinalURL = baseURL + 'all-puntosFinal';
+const puntosFinalCodeURL = baseURL + 'puntosFinal-code'; // anadir al service /:code 
 
 
 

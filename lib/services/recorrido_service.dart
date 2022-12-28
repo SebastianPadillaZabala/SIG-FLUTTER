@@ -8,16 +8,13 @@ import 'package:sig_app/utils/const_service.dart';
 Future<ApiResponse> getRecorridos() async {
   ApiResponse apiResponse = ApiResponse();
   try {
-    final response = await http.get(
-      Uri.parse(allRecorridosURL), 
-      headers: {
-        'Accept': 'application/json',
-      }
-    );
+    http.Response response = await http.get(Uri.parse(allRecorridosURL));
+    
     switch (response.statusCode) {
-      case 200: apiResponse.data = jsonDecode(response.body).map((p) => Recorrido.fromJson(p)).toList();
-                apiResponse.data as List<dynamic>;
-      //  apiResponse.data = Examen.fromJson(jsonDecode(response.body));
+      case 200:
+          apiResponse.data = jsonDecode(response.body).map((p) => 
+                             Recorrido.fromJson(p)).toList();
+                             apiResponse.data as List<dynamic>;
         break;
       case 404:
         apiResponse.error = unautorized;
@@ -36,15 +33,11 @@ Future<ApiResponse> getRecorridos() async {
 Future<ApiResponse> getUnRecorrido(String code) async {
   ApiResponse apiResponse = ApiResponse();
   try {
-    final response = await http.get(
+    http.Response response = await http.get(
       Uri.parse(unRecorridoURL + '/$code'), 
-      headers: {
-        'Accept': 'application/json',
-      }
     );
     switch (response.statusCode) {
       case 200: apiResponse.data = Recorrido.fromJson(jsonDecode(response.body));
-      //  apiResponse.data = Examen.fromJson(jsonDecode(response.body));
         break;
       case 404:
         apiResponse.error = unautorized;
@@ -58,3 +51,15 @@ Future<ApiResponse> getUnRecorrido(String code) async {
   }
   return apiResponse;
 }
+
+
+// Future<List<Recorrido>> getRecorridos2() async {
+//   http.Response response = await http.get(Uri.parse(allRecorridosURL));
+//   final lista = List.from(jsonDecode(response.body));
+//   List<Recorrido> recorridos = []; 
+//   lista.forEach((element) {
+//     final Recorrido rec = Recorrido.fromJson(element);
+//     recorridos.add(rec);
+//   });
+//   return recorridos;
+// }
