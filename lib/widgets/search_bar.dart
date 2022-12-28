@@ -40,7 +40,7 @@ class _SearchBarBody extends StatelessWidget {
             onTap: () async {
               final result = await showSearch(
                 context: context,
-                delegate: SearchDestinationDelegate(),
+                delegate: SearchDestinationDelegateIda(),
               );
               if (result == null) return;
               if (result.cancel) return;
